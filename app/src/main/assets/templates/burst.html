@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;height:100%;background:transparent;overflow:hidden}</style></head><body><script>
+window.onGesture=function(g){
+ var n=14,R=120*g.size,d=Math.round(10*Math.max(g.size,0.5)),x=g.xf*innerWidth,y=g.yf*innerHeight;
+ for(var i=0;i<n;i++){(function(i){
+  var a=i/n*2*Math.PI,p=document.createElement('div');
+  p.style.cssText='position:fixed;pointer-events:none;border-radius:50%;width:'+d+'px;height:'+d+'px;left:'+(x-d/2)+'px;top:'+(y-d/2)+'px;background:'+g.color+';box-shadow:0 0 10px '+g.color;
+  document.body.appendChild(p);
+  var an=p.animate([
+   {transform:'translate(0,0) scale(1)',opacity:g.opacity},
+   {transform:'translate('+Math.cos(a)*R+'px,'+Math.sin(a)*R+'px) scale(0.2)',opacity:0}],
+   {duration:g.duration,easing:'cubic-bezier(.2,.8,.2,1)'});
+  an.onfinish=function(){p.remove()};
+ })(i);}
+};
+</script></body></html>

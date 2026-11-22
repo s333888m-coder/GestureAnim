@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Gesture Animator</string>
+    <string name="service_desc">स्क्रीन पर स्वाइप, टच, बैक, होम और रीसेंट्स जैसे एक्शन पर एनिमेशन इफेक्ट दिखाने के लिए।</string>
+</resources>

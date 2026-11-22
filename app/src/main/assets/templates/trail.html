@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;height:100%;background:transparent;overflow:hidden}</style></head><body><script>
+window.onGesture=function(g){
+ var W=innerWidth,H=innerHeight,dir=g.dir=='none'?'up':g.dir,v=(dir=='up'||dir=='down');
+ var L=Math.round(Math.min(W,H)*0.5*g.size),th=Math.round(10*Math.max(g.size,0.6));
+ var w=v?th:L,h=v?L:th,x=g.xf*W,y=g.yf*H,D=(v?H:W)*0.45;
+ var dx=dir=='left'?-D:dir=='right'?D:0,dy=dir=='up'?-D:dir=='down'?D:0;
+ var e=document.createElement('div');
+ e.style.cssText='position:fixed;pointer-events:none;border-radius:99px;background:'+g.color+';box-shadow:0 0 18px '+g.color+';width:'+w+'px;height:'+h+'px;left:'+(x-w/2)+'px;top:'+(y-h/2)+'px';
+ document.body.appendChild(e);
+ var a=e.animate([
+  {transform:'translate('+(-dx/2)+'px,'+(-dy/2)+'px)',opacity:0},
+  {transform:'translate(0,0)',opacity:g.opacity,offset:0.4},
+  {transform:'translate('+(dx/2)+'px,'+(dy/2)+'px)',opacity:0}],{duration:g.duration,easing:'ease-out'});
+ a.onfinish=function(){e.remove()};
+};
+</script></body></html>

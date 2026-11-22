@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;height:100%;background:transparent;overflow:hidden}</style></head><body><script>
+// dir = उंगली की दिशा; ग्लो उस किनारे पर आता है जहाँ से मूवमेंट शुरू हुआ
+window.onGesture=function(g){
+ var t=Math.round(120*g.size),c=g.color,e=document.createElement('div'),s='position:fixed;pointer-events:none;opacity:0;';
+ if(g.dir=='right'){s+='left:0;top:0;bottom:0;width:'+t+'px;background:linear-gradient(to right,'+c+',transparent)'}
+ else if(g.dir=='left'){s+='right:0;top:0;bottom:0;width:'+t+'px;background:linear-gradient(to left,'+c+',transparent)'}
+ else if(g.dir=='up'){s+='left:0;right:0;bottom:0;height:'+t+'px;background:linear-gradient(to top,'+c+',transparent)'}
+ else if(g.dir=='down'){s+='left:0;right:0;top:0;height:'+t+'px;background:linear-gradient(to bottom,'+c+',transparent)'}
+ else {s+='left:0;top:0;right:0;bottom:0;box-shadow:inset 0 0 '+t+'px '+c}
+ e.style.cssText=s;document.body.appendChild(e);
+ var a=e.animate([{opacity:0},{opacity:g.opacity,offset:0.3},{opacity:0}],{duration:g.duration,easing:'ease-in-out'});
+ a.onfinish=function(){e.remove()};
+};
+</script></body></html>

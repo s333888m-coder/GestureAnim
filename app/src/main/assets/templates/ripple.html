@@ -1,0 +1,9 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;height:100%;background:transparent;overflow:hidden}</style></head><body><script>
+window.onGesture=function(g){
+ var d=Math.round(160*g.size),x=g.xf*innerWidth,y=g.yf*innerHeight,e=document.createElement('div');
+ e.style.cssText='position:fixed;pointer-events:none;border-radius:50%;width:'+d+'px;height:'+d+'px;left:'+(x-d/2)+'px;top:'+(y-d/2)+'px;border:4px solid '+g.color+';background:'+g.color+'33;box-shadow:0 0 24px '+g.color;
+ document.body.appendChild(e);
+ var a=e.animate([{transform:'scale(0.1)',opacity:g.opacity},{transform:'scale(1)',opacity:0}],{duration:g.duration,easing:'ease-out'});
+ a.onfinish=function(){e.remove()};
+};
+</script></body></html>
